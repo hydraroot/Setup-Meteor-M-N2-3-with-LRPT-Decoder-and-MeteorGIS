@@ -1,22 +1,22 @@
 # Setup Meteor M-N2-3 with LRPT-Decoder and MeteorGIS
 
-The Meteor-M series are equipped with two imaging payloads.<br>
+Meteor-M series are equipped with two imaging payloads.<br>
 
 MSU-MR is a low-resolution instrument operating at visible-light and near-infrared wavelengths.<br>
 It will take wide-angle images of the Earth to help monitor cloud cover and the icecaps.<br>
 
-The second imager, KMSS-2, provides complimentary high-resolution visible-light images of more specific areas.<br>
+The second image device, KMSS-2, provides complimentary high-resolution visible-light images of more specific areas.<br>
             
-The satellite also carries two sounding instruments:<br>
-
-the MTVZA-GYa microwave radiometer and IKFS-2 infrared spectrometer, which will build profiles of temperatures,
+The satellite also carries two sounding instruments, MTVZA-GYa microwave radiometer and IKFS-2 infrared spectrometer, which will build profiles of temperatures,
 humidity and wind conditions within the atmosphere.<br>
             
 As well as direct weather monitoring, Meteor-M series are used to relay data from automated weather stations across the Earths surface.<br>
 BRK, also known as SSPD, is the communications payload that will facilitate this, receiving data from stations and re-transmitting it for collection and analysis.<br>
+
 A Kospas-SARSAT emergency communications payload, RK-SM-MKA, is also carried to detect and relay distress signals, aiding search-and-rescue operations around the world.<br>
 
 As for searching continuous ways to improve Meteor reception, Vasili (rtl-sdr.ru - Plugins) and Oleg (LrptDecoder) did have the great idea to develop a QPSK Plugin in order to receive Meteor M-N2 images in real time thru LrptDecoder.<br>
+
 Since 2019 there are 2 Meteor satellites so we need another config/setup and trying to automate configuration changes with having minimal user input.</p>
 
 (Check current Meteor Mode's overhere: <a href="https://github.com/happysat/Meteor-M-N2-and-N2-2-Satellite-Operational-Status"
@@ -46,6 +46,7 @@ SDR Radio capable receiver:<br>
 <a href="https://airspy.com/airspy-r2/" target="_blank" style="text-decoration:none">Airspy R2</a><br>
 
 Airspy R2 sets a new level of performance in the reception ofthe VHF and UHF bands thanks to its low-IF architecture based on Rafael Micro R820T2 and a high quality Oversampling 12bit ADC and state of the art DSP.<br>
+
 In Oversampling Mode, the Airspy R2 applies Analog RF and IF filtering to the signal path and increases the resolution to up to 16-bit using the software decimation.<br>
 
 The Airspy R2, is 100% compatible with all the existing software including the de facto scanning standard SDR#, but also a number of popular software defined radio applications such as:<br>
