@@ -144,11 +144,6 @@ By design, Meteor Demodulator will manage the settings of the decoder and this s
 
 Example M2_LRPT_Decoder.ini configuration files for other modes are attached in the archive!<br>
 
-Download: <a href="http://www.meteorgis.space/" target="_blank">MeteorGIS</a><br>
-
-Many changes read the changelog.<br>
-Use the tool "MeteorGIS_Configurator" who verify the .ini, and let you edit it more friendly.<br>
-
 A Satellite Tracking program like Orbitron (<a href="http://www.stoff.pl" target="_blank" style="text-decoration:none">http://www.stoff.pl</a>) or
  WXTrack (<a href="http://www.satsignal.eu/software/wxtrack.htm" target="_blank" style="text-decoration:none">http://www.satsignal.eu/software/wxtrack.htm</a>).<br>
 
@@ -445,7 +440,11 @@ B=3<br>
 
 ## Setup MeteorGIS Meteor-M-N2 and N2-2<br>
 
-Download: <a href="http://www.meteorgis.space/" target="_blank">MeteorGIS</a><br>
+Download: <a href="http://www.meteorgis.space/](http://www.meteorgis.space/beta/" >MeteorGIS v2.25</a><br>
+
+Added missing default ini / font size changes.<br>
+Use the tool "MeteorGIS_Configurator" who verify the .ini, and let you edit it more friendly.<br>
+Beware that any custom changes with more then 5 shapes get overwritten!.<br>
 
 Extract MeteorGIS and LRPT-Decoder to C:\Meteor\&nbsp; <br>
 Only the M2_LRPT_Decoder.exe is needed, ini files will be generated from MeteorGIS.<br>
