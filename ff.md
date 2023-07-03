@@ -15,12 +15,9 @@ BRK, also known as SSPD, is the communications payload that will facilitate this
 
 A Kospas-SARSAT emergency communications payload, RK-SM-MKA, is also carried to detect and relay distress signals, aiding search-and-rescue operations around the world.<br>
 
-As for searching continuous ways to improve Meteor reception, Vasili (rtl-sdr.ru - Plugins) and Oleg (LrptDecoder) did have the great idea to develop a QPSK Plugin in order to receive Meteor M-N2 images in real time thru LrptDecoder.<br>
+As for searching continuous ways to improve Meteor reception, Vasili (rtl-sdr.ru - Plugins) and Oleg (LrptDecoder) did have the great idea to develop a Meteor Demodulator Plugin in order to receive Meteor M-N2 (and successors) images in real time thru LrptDecoder and trying to automate configuration changes with having minimal user input.<br>
 
-Since 2019 there are 2 Meteor satellites so we need another config/setup and trying to automate configuration changes with having minimal user input.</p>
-
-(Check current Meteor Mode's overhere: <a href="https://github.com/happysat/Meteor-M-N2-and-N2-2-Satellite-Operational-Status"
-              target="_blank">https://github.com/happysat/Meteor-M-N2-and-N2-2-Satellite-Operational-Status</a>)<br>
+Although this guide with the SDRSharp is outdated in 2023, and there are also other ways for software moderate reception, many people are still using it, therefore this update.<br>
 
 ## Appendix
 
@@ -121,8 +118,8 @@ SDRSharp, Orbitron, LRPT-Decoder<br>
 
 <a href="/meteor_2.3.zip?raw=true">Meteor Demodulator Plugin v2.3</a><br>
 
-Added interaction with Meteor LRPT-Decoder via socket and write control commands from the scheduler.<br>
-Added a mode of automatic detection of symbol speed.<br>
+- Added interaction with Meteor LRPT-Decoder via socket and write control commands from the scheduler.<br>
+- Added a mode of automatic detection of symbol speed.<br>
 
 <img src="img/OQPSK.jpg" alt="" width="230" height="556"><br>
 
@@ -142,7 +139,7 @@ M2 LRPT Decoder V56:<br>
 
 <img src="img/decoder_m2-2.png" alt="" width="686" height="376"><br>
 
-This version of LRPTDecoder will work with both Meteor M-N2 and Meteor M-N2-2.</p>
+This version of LRPTDecoder will work with Meteor M-N2-3.</p>
 By design, Meteor Demodulator will manage the settings of the decoder and this should reduce the number of settings, that must be done when Meteor changes operating modes.<br>
 
 Example M2_LRPT_Decoder.ini configuration files for other modes are attached in the archive!<br>
