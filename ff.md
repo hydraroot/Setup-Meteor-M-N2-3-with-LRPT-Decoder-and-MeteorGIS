@@ -123,7 +123,7 @@ SDRSharp, Orbitron, LRPT-Decoder<br>
 
 <img src="img/OQPSK.jpg" alt="" width="230" height="556"><br>
 
-<a href="http://rtl-sdr.ru/uploads/download/ddetracker.zip" target="_blank" style="text-decoration:none">DDE Tracking Client v1.2</a><br>
+<a href="/ddetracker.zip?raw=true" style="text-decoration:none">DDE Tracking Client v1.2</a><br>
 
 <img src="img/ddetracker.jpg" alt="" width="226" height="191"><br>
 
@@ -144,12 +144,11 @@ By design, Meteor Demodulator will manage the settings of the decoder and this s
 
 Example M2_LRPT_Decoder.ini configuration files for other modes are attached in the archive!<br>
 
-A Satellite Tracking program like Orbitron (<a href="http://www.stoff.pl" target="_blank" style="text-decoration:none">http://www.stoff.pl</a>) or
- WXTrack (<a href="http://www.satsignal.eu/software/wxtrack.htm" target="_blank" style="text-decoration:none">http://www.satsignal.eu/software/wxtrack.htm</a>).<br>
+A Satellite Tracking program like Orbitron (<a href="http://www.stoff.pl" target="_blank" style="text-decoration:none">http://www.stoff.pl</a>).<br>
 
 ## Setup Orbitron/SDRSharp<br>
 
-Orbitron or WXtrack takes care of the doppler shift frequency correction for the carrier of the Meteor Demodulator Plugin.<br>
+Orbitron takes care of the doppler shift frequency correction for the carrier of the Meteor Demodulator Plugin.<br>
 DDE Tracking client Plugin collects data from Orbitron or any other Tracking client.<br>
 
 Note it's not gonna be used for correcting the main tuned frequency in SDRSharp the signal will be unlocked from the QPSK Plugin using that!<br>
@@ -169,10 +168,10 @@ Open Folder install location Orbitron\Config\setup.cfg in the driver section (en
 
 SDRSharp=&lt;your path to SDRSharp folder&gt;\SDRSharp\SDRSharp.exe<br>
 
-Save and start Orbitron, make sure you have a up to date TLE file containing Meteor M-N2 and M-N2-2 Satellite's.<br>
-Insert this url in Main/Click Tools Icon/TLE Updater (http://www.celestrak.com/NORAD/elements/weather.txt).<br>
+Save and start Orbitron, make sure you have a up to date TLE file containing Meteor M-N2-3 Satellite.<br>
+Insert this url in Main/Click Tools Icon/TLE Updater (https://celestrak.org/NORAD/elements/weather.txt).<br>
 
-Select Meteor M2 in the right list with the checkbox.<br>
+Select Meteor M-N2-3 in the right list with the checkbox.<br>
 
 <img src="img/Orbitron_1.jpg" alt="" width="672" height="525"><br>
 
@@ -181,30 +180,23 @@ Goto Main/Setup (the tool icon) Miscellaneous tab and set AOS notification to 0 
 <img src="img/Orbitron_2.jpg" alt="" width="674" height="532"><br>
 
 Then goto Extra tab last option AOS Notification: Make satellite active.<br>
+<b>Check the correct time zone!</b><br>
 
 <img src="img/Orbitron_3.jpg" alt="" width="673" height="525"><br>
-
-Repeat these steps to add Meteor M-N2-2.<br>
-<b>Check the correct time zone!</b><br>
 
 Fill in your location/GPS coordinates in the location tab.<br>
 
 <img src="img/Orbitron_4.jpg" alt="" width="676" height="533"><br>
 
-Goto tab Rotor/Radio, make sure in Dnlink/MHz: 137.100Mhz is filled in (Check current Meteor Mode's overhere: <a href="https://github.com/happysat/Meteor-M-N2-and-N2-2-Satellite-Operational-Status">https://github.com/happysat/Meteor-M-N2-and-N2-2-Satellite-Operational-Status</a>),<br>
+Goto tab Rotor/Radio, make sure in Dnlink/MHz: 137.100Mhz is filled in (Check current Meteor Mode's overhere: <a href="https://github.com/happysat/Meteor-M-N-2-3-Satellite-Operational-Status/blob/main/README.md">https://github.com/happysat/Meteor-M-N2-and-N2-2-Satellite-Operational-Status</a>),<br>
 Dnlink mode: FM-W, select SDRSharp from the Driver dropdown box and click the icon next to it above the lock symbol.<br>
 
 SDRSharp will start.<br>
-Main Frequency in SDRSharp must be set to (Check current Meteor Mode's overhere: <a href="https://github.com/happysat/Meteor-M-N2-and-N2-2-Satellite-Operational-Status">https://github.com/happysat/Meteor-M-N2-and-N2-2-Satellite-Operational-Status</a>)
-Modulation WFM and preferred bandwidth 90000 Hz.<br>
+Main Frequency in SDRSharp must be set to Modulation WFM and preferred bandwidth 90000 Hz.<br>
 Tuner bandwidth to 1.4MSPS, 1.4 MSPS is needed IF samplerate will be &gt; 288 kHz<br>
 Meteor Demodulator plugin will show a warning when using <b>lower bitrates! </b><br>
 
 ## Setup DDE-Tracking Client<br>
-
-Who can better explain this then the author himself :)<br>
-
-<a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=ru&amp;rurl=translate.google.ru&amp;sl=ru&amp;sp=nmt4&amp;tl=en&amp;u=http://rtl-sdr.ru/page/komplekt-plaginov-dlja-priema-ka-meteor-i-drugih&amp;xid=17259,15700022,15700043,15700186,15700191,15700256,15700259,15700262&amp;usg=ALkJrhj069dszuCsI-UTiZ3RdsUTETCZWw" target="_blank" style="text-decoration:none">Follow this guide from RTL-sdr.ru in English</a><br>
 
 In options button you can choose which Tracking program is going to be used, default is Orbitron.<br>
 
@@ -227,17 +219,15 @@ set PSK_set_SymbolRate &lt;Auto&gt; - Meteor Demodulator plugin automatic detect
 M2_decoder_init_Line &lt;rgb=123.jpg&gt; or (rgb=125,444,555 depending which mode Meteor is using), overrides path in decoder ini file.<br>
 M2_decoder_init_Line&lt;path=C:\Meteor\ImagesM2&gt; - Path to save images for M-N2, overrides path in decoder ini file.<br>
 M2_decoder_init_Line&lt;RoughStartTimeUTC=now&gt; - Using RoughStartTimeUTC = Now from the plugin, then Time will be initialized automatically at the moment of receipt of the first data, overrides path in decoder ini file.<br>
-M2_decoder_init_Line&lt;TleFileName=C:\Meteor\LRPT_Decoder\M2-2.txt&gt; - Path Meteor TLE File for Georef, overrides path in decoder ini file.<br>
-QPSK_demodulator_Start - QPSK Plugin is triggered to start from DDE Tracking Client by this command only for M-N2.<br>
-OQPSK_demodulator_Start - QPSK Plugin is triggered to start from DDE Tracking Client by this command Needed for M-N2-2.<br>
+M2_decoder_init_Line&lt;TleFileName=C:\Meteor\LRPT_Decoder\M2-3.txt&gt; - Path Meteor TLE File for Georef, overrides path in decoder ini file.<br>
+OQPSK_demodulator_Start - QPSK Plugin is triggered to start from DDE Tracking Client by this command Needed for M-N2-3.<br>
 send_tracking_frequency_On - Starting Doppler frequency correction for Meteor Demodulator Plugin carrier if the Satellite is active (If this is unwanted remove the command).<br>
 start_program_Path - LRPT-Decoder folder which includes run.bat, pointing to LRPT_Decoder.exe, explained more below.<br>
 
 <b>LOS window section command explanation:</b><br>
 
 send_Tracking_Frequency_Off - Doppler correction for Meteor Demodulator Plugin Carrier stops.<br>
-QPSK_demodulator_Stop - Stop Meteor Demodulator Plugin, only for M-N2.<br>
-OQPSK_demodulator_Stop - Stop Meteor Demodulator Plugin, needed for M-N2-2.<br>
+OQPSK_demodulator_Stop - Stop Meteor Demodulator Plugin, needed for M-N2-3.<br>
 radio_stop - SDRSharp stops playing.<br>
 start_programm_Path - Optional custom batch file with some commands to put s-files in another folder when both Meteor's are received to separate them.<br>
 
@@ -253,7 +243,7 @@ Not needed add to scheduler manually!<br>
 
 Meteor Demodulator plugin sends received data in real time to Lrpt-Decoder via TCP Local Host connection (127.0.0.1) and/or can record and write a raw file called S-file.<br>
 
-Auto searchcarrier inside the Meteor Demodulator Plugin tunes to (Check current Meteor Mode's overhere: <a href="https://github.com/happysat/Meteor-M-N2-and-N2-2-Satellite-Operational-Status">https://github.com/happysat/Meteor-M-N2-and-N2-2-Satellite-Operational-Status</a>).<br>
+Auto searchcarrier inside the Meteor Demodulator Plugin tunes to currently in use frequency.<br>
 Meteor streams and lock on the signal if its strong enough.</p>
 <p> When Sat Tracking is checked it uses Doppler correction for a faster signal lock.</p>
 
@@ -263,7 +253,7 @@ Note Tracking info will only displayed when the Satellite is active!</p>
 <p>Config button is used to change the default PLL Bandwidth Value and a save path for writing the S-file.</p>
 <img src="img/oqpsk.png" alt="" width="237" height="317"><br>
 
-People who are not using DDE-Tracking Client, and running the Meteor Demodulator Plugin manual <b>Meteor M-N2-2 is using OQPSK Modulation</b>, make sure to select it!<br>
+People who are not using DDE-Tracking Client, and running the Meteor Demodulator Plugin manual <b>Meteor M-N2-3 is using OQPSK Modulation</b>, make sure to select it!<br>
 
 How Meteor Demodulator plugin works:<br>
 
@@ -271,7 +261,7 @@ If Satellite elevation &gt; 0 (AOS) trigger the start of applications needed for
 Meteor Demodulator first synchronizes with the signal in frequency configuration of the modulation speed and modulation type (satellite name).<br>
 Automatic speed detection determines the symbolic flow rate.<br>
 
-There is no need to change the decoder settings when changing 72K / 80K and M2 / M2.2. <br>
+There is no need to change the decoder settings when changing 72K / 80K and M2 / M2-3 <br>
 LRPT-Decoder will receive signal information from the Meteor Demodulator plugin.<br>
 
 Only after synchronization in frequency and symbol rate Meteor Demodulator plugin begin to transmit data to the decoder.<br>
@@ -320,18 +310,18 @@ It is enough to change the speed in the scheduler.<br>
 
 M2 LRPT-Decoder compatible with these functions is above Version 50.<br>
 
-## Setup LRPT-Decoder for Meteor M-N2 and M-N2-2</h2>
+## Setup LRPT-Decoder for Meteor</h2>
 
-The idea is to run 1 LRPT-Decoder for both Meteor satellite's and this should reduce the number of settings that must be done when Meteor changes operating modes.<br>
+The idea is to run 1 LRPT-Decoder for multiple Meteor satellite's and this should reduce the number of settings that must be done when Meteor changes operating modes.<br>
 
 This allows to modify the settings when changing the reception conditions only in the scheduler from DDE Tracking Client,<br>
 and not in the entire chain of programs for processing the signal from the satellite.<br>
 
-<b>DDE-Tracker client scheduler setup for Meteor M-N2:</b><br>
+<b>DDE-Tracker client scheduler setup for Meteor:</b><br>
 
 <img src="img/M-N2_cfg.png" alt="" width="720" height="368"><br>
 
-The<b> difference between Meteor M-N2 and N2-2 is QPSK Modulation</b> &lt;- QPSK_demodulator_Start mode must be selected for M-N2!<br>
+The<b> difference between Meteor M-N2 and N2-2/2-3 is QPSK Modulation</b> &lt;- OQPSK_demodulator_Start mode must be selected for M-N2-3!<br>
 
 set PSK_set_SymbolRate &lt;Auto&gt; - Meteor Demodulator plugin automatic detection mode of symbol rate.<br>
 
