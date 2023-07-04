@@ -317,38 +317,11 @@ The idea is to run 1 LRPT-Decoder for multiple Meteor satellite's and this shoul
 This allows to modify the settings when changing the reception conditions only in the scheduler from DDE Tracking Client,<br>
 and not in the entire chain of programs for processing the signal from the satellite.<br>
 
-<b>DDE-Tracker client scheduler setup for Meteor:</b><br>
-
-<img src="img/M-N2_cfg.png" alt="" width="720" height="368"><br>
-
-The<b> difference between Meteor M-N2 and N2-2/2-3 is QPSK Modulation</b> &lt;- OQPSK_demodulator_Start mode must be selected for M-N2-3!<br>
-
-set PSK_set_SymbolRate &lt;Auto&gt; - Meteor Demodulator plugin automatic detection mode of symbol rate.<br>
-
-M2_decoder_init_Line &lt;rgb=123.jpg&gt; or (rgb=125,444,555 depending which mode Meteor is using), overrides path in decoder ini file.<br>
-
-<b>If you do not want all received images into 1 folder:</b><br>
-M2_decoder_init_Line&lt;path=C:\Meteor\ImagesM2&gt; - Path to save images for M-N2, overrides path in decoder ini file.<br>
-
-<b>If you want to use georeference for mapping boundaries or test ect, include:</b><br>
-M2_decoder_init_Line&lt;RoughStartTimeUTC=now&gt; - Using RoughStartTimeUTC = Now from the plugin, then Time will be initialized automatically at the moment of receipt of the first data, overrides path in decoder ini file.<br>
-M2_decoder_init_Line&lt;TleFileName=C:\Meteor\LRPT_Decoder\M2-2.txt&gt; - Path Meteor TLE File for Georef, overrides path in decoder ini file.<br>
-
-QPSK_demodulator_Start - QPSK Plugin is triggered to start from DDE Tracking Client by this command only for M-N2.<br>
-send_tracking_frequency_On - Starting Doppler frequency correction for Meteor Demodulator Plugin carrier if the Satellite is active (If this is unwanted remove the command).<br>
-
-start_program_Path - Path&nbsp; to LRPT-Decoder for startup run.bat (do not use a path with spaces example program files!).<br>
-The batch file run.bat point's to LRPTDecoder.exe and already included in the LRPT-decoder folder/archive, just enter its path &lt;your path\run.bat&gt; to the scheduler.<br>
-
-<b>Batch file contents:</b><br>
-
-START M2_LRPT_Decoder.exe M2_LRPT_Decoder.ini<br>
-
-<b>DDE-Tracker client scheduler setup for Meteor M-N2-2:</b><br>
+<b>DDE-Tracker client scheduler setup for Meteor M-N2-3:</b><br>
 
 <img src="img/M-N2.2_cfg.png" alt="" width="722" height="368"><br>
 
-The <b>difference between Meteor M-N2-2 and N2 is OQPSK Modulation</b> &lt;- OQPSK_demodulator_Start must be selected for M-N2-2!<br>
+The<b> difference between Meteor M-N2 and N2-2/2-3 is QPSK Modulation</b> &lt;- OQPSK_demodulator_Start mode must be selected for M-N2-3!<br>
 
 <b>If you want to use georeference for mapping boundaries or test ect, include:</b><br>
 M2_decoder_init_Line&lt;RoughStartTimeUTC=now&gt; - Using RoughStartTimeUTC = Now from the plugin, then Time will be initialized automatically at the moment of receipt of the first data, overrides path in decoder ini file.<br>
@@ -362,8 +335,12 @@ M2_decoder_init_Line&lt;path=C:\Meteor\ImagesM22&gt; - Path to save images for M
 OQPSK_demodulator_Start - QPSK Plugin is triggered to start from DDE Tracking Client by this command only for M-N2-2.<br>
 send_tracking_frequency_On - Starting Doppler frequency correction for Meteor Demodulator Plugin carrier if the Satellite is active (If this is unwanted remove the command).<br>
 
-start_program_Path - Path to LRPT-Decoder for startup run.bat.<br>
-<b>It must be the very same path as setup above for Meteor M-N2! (we use 1 Decoder).</b><br>
+start_program_Path - Path&nbsp; to LRPT-Decoder for startup run.bat (do not use a path with spaces example program files!).<br>
+The batch file run.bat point's to LRPTDecoder.exe and already included in the LRPT-decoder folder/archive, just enter its path &lt;your path\run.bat&gt; to the scheduler.<br>
+
+<b>Batch file contents:</b><br>
+
+START M2_LRPT_Decoder.exe M2_LRPT_Decoder.ini<br>
 
 <img src="img/decoder_m2-2.png" alt="" width="690" height="378"><br>
 
@@ -387,21 +364,19 @@ mono=yes<br>
 logs=no<br>
 APID70=no<br>
 VCDU=no<br>
-path=C:\Meteor\ImagesM22 (edit to your path of images)<br>
-path =C:\Meteor\Images\M20 for Meteor-M No. 2<br>
-pathM22 =C:\Meteor\Images\M22 for Meteor-M No. 2.2<br>
+path=C:\Meteor\Images\M2<br>
+pathM22 =C:\Meteor\Images\M23<br>
 
 If you want to use georeference for mapping boundaries include:<br>
 GEO Creates a gcp which can be used for MeteorGIS or LRPT_Places to insert boundaries or cities..<br>
 
 [GEO]<br>
-RoughStartTimeUTC=18-8-2019<br>
-TleFileName=C:\Meteor\LRPT_Decoder\M2-2.txt<br>
+RoughStartTimeUTC=04-07-2023<br>
+TleFileName=C:\Meteor\LRPT_Decoder\M2-3.txt<br>
 Alfa_M2=110.8<br>
 Delta_M2=32<br>
-Alfa_M22=110.8<br>
-Delta_M22=-4.8<br>
-
+Alfa_M22=111.2<br>
+Delta_M22=-3.2<br>
 Alfa - camera angle<br>
 Delta - offset along the line<br>
 
@@ -410,15 +385,7 @@ Then, changing Alfa, you can expand / contract images on a line.<br>
 
 When choosing delta, be aware that a change of 1 will result in a shift of about 1 km for misplaced overlay correction.<br>
 
-For AMIGOS (Only Meteor M-N2)<br>
-
-[GLOB]<br>
-AmigoID=0 <br>
-mode=UDP<br>
-path=C:\Meteor\Tools\AMIGOS\ShareFolder (edit to your path of
-AMIGOS when used or leave out [GLOB] section )<br>
-host=185.26.115.106<br>
-=2013<br>
+Deltas and Alphas changed to reflect accurate coastline and border placements for Meteor M-N2-3.<br>
 
 [FAST]<br>
 FORMAT=jpg<br>
@@ -426,165 +393,14 @@ R=1<br>
 G=2<br>
 B=3<br>
 
+AMIGOS is not working anymore.<br>
+
 <b>Save M2_LRPT_Decoder.ini</b><br>
 
-## Setup MeteorGIS Meteor-M-N2 and N2-2<br>
+## Setup MeteorGIS Meteor-M N2-3<br>
 
-Download: <a href="http://www.meteorgis.space/](http://www.meteorgis.space/beta/" >MeteorGIS v2.25</a><br>
-
-Added missing default ini / font size changes.<br>
-Use the tool "MeteorGIS_Configurator" who verify the .ini, and let you edit it more friendly.<br>
-Beware that any custom changes with more then 5 shapes get overwritten!.<br>
-
-Extract MeteorGIS and LRPT-Decoder to C:\Meteor\&nbsp; <br>
-Only the M2_LRPT_Decoder.exe is needed, ini files will be generated from MeteorGIS.<br>
-
-<b>Do not forget </b>to copy out SGP4.dll from folder meteorgis\file_to_put_in_M2_LRPT_Decoder_folder\ into C:\Meteor\&nbsp; its needed to create the composite images ect.!<br>
-
-To make configuration/setup of MeteorGIS easier the Authors did make a very handy tool:<br>
-<b>Find MeteorGIS_Configurator.exe in extracted MeteorGIS Folder</b> double click choose the default.ini and adjust your settings in the following tabs.<br>
-
-<b>But first run MeteorGIS.exe once so it can create a default.ini configuration file to edit!<br>
-
-Bug in v2.24 does not create a default.ini, <a href="/default.zip?raw=true">download default.ini overhere</a><br>
-
-<img src="img/MeteorGIS_Configurator.png" alt="" width="1081" height="674"><br>
-
-<b>As of MeteorGIS v.2.20 no more need of 2 ini and a batch file, Sat is automatically detected in auto mode.</b><br>
-
-<b>For this setup you do not have to make any changes to M2_LRPT_Decoder.ini, MeteorGIS will handle the configuration.</b><br>
-
-<b>Example of only the folder setup in default.ini:</b><br>
-
-<b>[Program]</b><br>
-inputDir=C:\Meteor\images-M2\&nbsp; <b>&lt;&lt;-- Where LRPT-decoder saves images</b><br>
-outputDir=C:\Meteor\out-images-M2\&nbsp; <b>&lt;&lt;-- Here you will find processed images by MeteorGIS, Composite, Treated ect from both Meteor's.</b><br>
-<b>[M2_LRPT_Decoder]</b><br>
-pathToM2_LRPT_Decoder=C:\Meteor\&nbsp;<b>
-&lt;&lt;--LRPT-Decoder.exe </b><br>
-pathToSaveDecodedImages=C:\Meteor\images-M2\M2\&nbsp; <b>&lt;&lt;-- Images of Meteor M2</b><br>
-pathToSaveDecodedImagesM22=C:\Meteor\images-M2\M22\ <b>&lt;&lt;-- Images of Meteor M22</b><br>
-
-The folder structure:<br>
-
-<img src="img/folder3.png" alt="" width="852" height="334"><br>
-
-C:\Meteor\ <br>
-Images-M2\<br>
-Images-M2\M2<br>
-Images-M2\M22<br>
-MeteorGIS<br>
-out-images<br>
-S_file\<br>
-Tools\<br>
-M2_LRPT-Decoder.exe<br>
-
-<b>Next is setup commands for MeteorGIS in Scheduler.</b><br>
-
-<b>Example Meteor M-N2 Setup in DDE Tracking Client Scheduler Config:</b><br>
-
-<img src="img/M2_GIS.png" alt="" width="721" height="371"><br>
-
-</b><b> These lines are important:</b><br>
-
-The frequency Check current Meteor Mode's overhere: <a href="https://github.com/happysat/Meteor-M-N2-and-N2-2-Satellite-Operational-Status" target="_blank">https://github.com/happysat/Meteor-M-N2-and-N2-2-Satellite-Operational-Status</a><br>
-
-set PSK_set_SymbolRate &lt;72000&gt; for Meteor M-N2.<br>
-
-start_programm_Path&lt;C:\Meteor\MeteorGIS\MeteorGIS.exe&gt; - Path to MeteorGIS.exe folder (dont use a path with spaces example program files!.)<br>
-
-</b><b> So change this in DDE Tracking Client schedule commands!</b><br>
-
-<b>Example Meteor M-N2-2 Setup in DDE Tracking Client Scheduler Config:</b><br>
-
-<img src="img/M2-2_GIS.png" alt="" width="719" height="367"><br>
-
-<b>These lines are important:</b><br>
-
-The frequency Check current Meteor Mode's overhere: <a href="https://github.com/happysat/Meteor-M-N2-and-N2-2-Satellite-Operational-Status" target="_blank">https://github.com/happysat/Meteor-M-N2-and-N2-2-Satellite-Operational-Status</a><br>
-
-set PSK_set_SymbolRate &lt;Auto&gt; <br>
-
-start_programm_Path&lt;C:\Meteor\MeteorGIS\MeteorGIS.exe&gt; - Path to MeteorGIS.exe folder (dont use a path with spaces example program files!.)<br>
-
-(Optional) The s_file.bat file in the scheduler contains:<br>
-
-move C:\Meteor\S_file\* C:\Meteor\S_file\M22<br>
-And does move the s-file after the pass to different folders.<br>
-
-<b>So change this in DDE Tracking Client schedule commands!</b><br>
-
-When Meteor rises above the horizon in Orbitron (you can check with simulation mode) ,<br>
-The scheduler will execute the commands, starting MeteorGIS:<br>
-
-<img src="img/GIS.jpg" alt="" width="674" height="342"><br>
-
-When a <b>signal lock</b> is detected LRPT Decoder will start:&nbsp;&nbsp; <br>
-
-<img src="img/GIS_Dec.jpg" alt="" width="670" height="362"><br>
-
-<b>Command Line Options for MeteorGIS:</b><br>
-
-<b>/nolive</b><br>
-By default, MeteorGIS will work in automatic mode.<br>
-It can launch the decoder (M2_LRPT_Decoder.exe) after creating the right ini file for it. <br>
-If you specify this option, you have to make it by yourself, or for treat some old images.<br>
-If you didn't use this option (mean automatic mode) take care to not specify an input file (but folder instead)<br>
-
-<b>/notle</b><br>
-
-If you specify this option, the program will not try to download the latest available TLE. (Don't use unless you want to treat old .s file.)<br>
-
-<b>/input:</b><br>
-Specify an input file to treat it. Could be a folder, in this case it will search for the last file in this folder AND subfolders.<br>
-File specified could be a jpg, a bmp (in this case give one of the 3 channels bmp name) or a .s file (Read the "About_.s.txt").<br>
-Jpg images are NOT post-treated.<br>
-Of course, you must have the .gcp file in relation with it (apart for .s file - it will be generated).<br>
-
-<b>/outdir</b>:<br>
-Specify the output folder for treated files. If not exist, will be created.<br>
-Take care as if you put the folder embraced in quotes (") for example if the path contain space, to NOT PUT a \ at the end !!!<br>
-
-<b>/type:</b><br>
-The type(s) of image(s) generated. Override the option in the "Program" section.<br>
-Should be one or more of the following (separate them by a coma ",") rgb,ir,thermal,ir_rain,rgb_rain<br>
-
-<b>/proj:</b><br>
-The type of projection (UTM or LatLon). Override the option in the "Program" section.<br>
-Should be UTM or Mercator.<br>
-
-<b>/config:</b><br>
-Specify another ini file if you want to keep different configurations.<br>
-
-<b>/compose:</b><br>
-Specify one or more image(s) to be composed with the input one. Must be the entire path to the image(s).<br>
-If you specify more than one file separate them by a coma.<br>
-
-<b>/composeauto</b><br>
-The program will create all image(s) specified or found in input (only if doesn't yet exist) plus a composition of all passes within the timespan Composition option of the file specified as input (or last one if a folder is specified).<br>
-This option is used only if you use the /nolive option (manual mode). In case of live reception, this option is always set.<br>
-
-<b>/sat:</b><br>
-Used only if processing .s file. To give the decoder the right tle file and save folder + put the right sat name on watermark.<br>
-
-For manual mode (only for .s file) you need to specify the sat name (M2 or M2.2) with the command line /sat:<br>
-</b><b> </b><b>Make a batch file named Manual_M2_GIS.bat inside the MeteorGIS folder.</b>
-            
-C:\Meteor\MeteorGIS\MeteorGIS.exe /nolive /composeauto /sat:M2 /config:C:\Meteor\MeteorGIS\default.ini<br>
-
-<b>Make another for Manual_M2-2_GIS.bat and insert:</b><br>
-
-C:\Meteor\MeteorGIS\MeteorGIS.exe /nolive /composeauto /sat:M2.2 /config:C:\Meteor\MeteorGIS\default.ini<br>
-
-Save, and run for manual re-processing.<br>
-
-Offcourse you need a s-file for re-processing first.!<br>
-
-Make the changes for manual processing in LRPT-Decoder.<br>
-
-Tip: rename s-file without _underscores for manual processing and GIS recognize the format to create all images:
-2019_11_23_LRPT_21-07-32.s into 2019-11-23-21-07-32.s<br>
-Put created images in the folder you specified in MeteorGIS config so GIS know where to find them.<br>
+Les Hamilton did make a excellent guide - <a href="https://leshamilton.co.uk/MeteorGIS.htm" >Portable Installation Suite for producing Meteor M 2-3 GIS images.</a><br>
+And also his <a href="http://leshamilton.co.uk/ReprocessGIS.htm" >GIS Suite for Reprocessing old Meteor M2 S-files.</a><br>
 
 ## Manual LRPT-Decoder setup<br>
 
@@ -599,8 +415,8 @@ Setup without using SDR in real time for manual processing S-files.<br>
 
 [IN]<br>
 source=man or file path tcp will not work!<br>
-sat=M2 or M2.2 <br>
-mode=72k or 80k<br>
+sat=M2.2<br>
+mode=72k<br>
 
 [OUT]<br>
 rgb=123.jpg (Meteor once in a while has maintenance cooling then IR channel's are turned off for some days making Channel 1,2 and 3 active then this line must be inserted rgb=123.jpg 3 visible channels + no IR otherwise when IR is active use 125.jpg)<br>
@@ -609,18 +425,17 @@ mono=yes<br>
 logs=no<br>
 APID70=no<br>
 VCDU=no<br>
-path=C:\Meteor\images-M2\<br>
+path=C:\Meteor\images-M23\<br>
 
 GEO Creates a gcp which can be used for MeteorGIS or LRPT_Places to insert boundaries or cities..<br>
 
 [GEO]<br>
-RoughStartTimeUTC=18-8-2019&nbsp; &lt;&lt;-- change to current date or date of re-processed s-file.<br>
-TleFileName=C:\Meteor\LRPT_Decoder\M2-2.txt&nbsp; &lt;&lt;-- point to M2_tle.txt or M22 in MeteorGIS LRPT-Decoder folder.<br>
+RoughStartTimeUTC=04-07-2023&nbsp; &lt;&lt;-- change to current date or date of re-processed s-file.<br>
+TleFileName=C:\Meteor\LRPT_Decoder\M2-3.txt&nbsp; &lt;&lt;-- point to M2-3 tle file.<br>
 Alfa_M2=110.8<br>
 Delta_M2=32<br>
-Alfa_M22=110.8<br>
-Delta_M22=-4.8<br>
-
+Alfa_M22=111.2<br>
+Delta_M22=-3.2<br>
 Alfa - camera angle<br>
 Delta - offset along the line<br>
 
@@ -629,13 +444,15 @@ Then, changing Alfa, you can expand / contract images on a line.<br>
 
 When choosing delta, be aware that a change of 1 will result in a shift of about 1 km for misplaced overlay correction.<br>
 
+Deltas and Alphas changed to reflect accurate coastline and border placements for Meteor M-N2-3.<br>
+
 [FAST]<br>
 FORMAT=jpg<br>
 R=1<br>
 G=2<br>
 B=3<br>
 
-(Meteor once in a while has maintenance cooling then IR channel's are turned off for some days making Channel 1,2 and 3 active so the config is RGB 123, when IR is active use RGB 125).<br>
+AMIGOS is not working anymore.<br>
 
 <b>Save M2_LRPT_Decoder.ini</b><br>
 
@@ -662,11 +479,6 @@ There are also options to save each of the individual grey scale channels.<br>
 
 http://leshamilton.co.uk/meteor3m.htm<br>
 
-So change in LRPToffLineDecoder.ini :<br>
-
-[OUT]<br>
-rgb=125.jpg<br>
-
 <img src="img/smooth.jpg" alt="" width="906" height="682"><br>
 
 SmoothMeteor - <a href="http://leshamilton.co.uk/meteor3m.htm" target="_blank" style="text-decoration:none">http://leshamilton.co.uk/meteor3m.htm</a><br>
@@ -677,7 +489,7 @@ LRPT Image Processor - <a href="http://www.satsignal.eu/software/LRPT-processor.
 
 Meteor M-N2-2 Telemetry Unpacker:<br>
 
-Only for Meteor M-N2-2!<br>
+Only for Meteor M-N2-2 not working exactly on M-N2-3!<br>
 N-2-2 has a new different way of processing Telemetry on PID70 e.g. info from Glonass and its position.<br>
 
 Program for unpacking telemetry from APID70 for testing.<br>
@@ -696,61 +508,5 @@ Roll, pitch, yaw can improve snapping to absolute accuracy!<br>
 
 Download <a href="/Telemetry.zip?raw=true">Telemetry Unpacker</a><br>
 
-For AMIGOS (Only Meteor M-N2)<br>
-
-Users of LRPT decoder will automatically send UDP packets via port 2013 to the server,<br>
-if section global in M2_LRPT_Decoder.ini config file contains AMIGO Setup.<br>
-
-And if they work online, they become anonymous members of AMIGOS.<br>
-
-Setup M2_LRPT_Decoder:<br>
-
-If the new decoder is never started there is a section line called:<br>
-
-[GLOB]<br>
-AmigoID=0<br>
-
-After first start it will generate a uniqe ID for you, so meteor robonuka-servers can see from who this data is.<br>
-
-Setup parameter AmigoID=0. Zero means that ID will be generated automatically.<br>
-For anonymus ID&gt;10000, for registred(future) ID&lt;10000<br>
-
-Example (AmigoID=1174299964)<br>
-
-Open M2_LRPT_Decoder.ini<br>
-
-Add or change:<br>
-
-[GLOB]<br>
-AmigoID=0<br>
-mode=UDP<br>
-path=C:\AMIGOS\ShareFolder (edit to your path of AMIGOS)<br>
-host=185.26.115.106<br>
-port=2013<br>
-
-Save and Close.<br>
-
-AmigosViewer is a program to view received data from users on the server as an image.<br>
-
-Download: <a href="/AMIGOS.zip?raw=true"> AmigosViewer</a><br>
-
-Setup AmigosViewer:<br>
-
-1. Run AmigosViewer.exe.<br>
-2. If after run in Caption of AmigosViewer window you can see<br>
-"Amigos Viewer [FTP][LOGIN]" it is OK and you can go next paragraph.<br>
-If not it means a problems offline.<br>
-3. Click "Start".<br>
-4. If you want see picture realtime - click big button "START". If you want<br>
-to see old data - uncheck "Online image" and set datetime and after click the "START".<br>
-<img src="img/AMIGOS_2.jpg" alt="" width="619" height="433"><br>
-5. Wait the end of process.<br>
-<img src="img/AMIGOS.jpg" alt="" width="629" height="438"><br>
-
-6. Click "StopAndSave" pictures of the viewer are saved in AMIGOS/IMAGES.<br>
-7. Click "Exit".<br>
-8. You can now view or process from folder images.<br>
-<a href="http://185.26.115.106:8080/" target="_blank">AMIGOS Webserver</a><br>
-
 Special thanks to:<br>
-Oleg (LRPT-Decoder), Vasili (Meteor Demodulator/DDE-Tracker Plugins), Christoper Marchand and Thibaut Fouine (MeteorGIS), Youssef Touil (SDR#/Airspy Radio), Nooelec.com, Les Hamilton (SmoothMeteor),&nbsp; David Taylor (LRPT Image Processor), Herman-PB0AHX (Host), Mother Russia (Meteor M-N-Serie), and everybody on the Facebook APT-Group!<br>
+Oleg (LRPT-Decoder), Vasili (Meteor Demodulator/DDE-Tracker Plugins), Christoper Marchand and Thibaut Fouine (MeteorGIS), Youssef Touil (SDR#/Airspy Radio), Nooelec.com, Les Hamilton (SmoothMeteor/MeteorGIS Suite),&nbsp; David Taylor (LRPT Image Processor), Roscosmos/Roshydromet (Meteor M-N-Serie).<br>
