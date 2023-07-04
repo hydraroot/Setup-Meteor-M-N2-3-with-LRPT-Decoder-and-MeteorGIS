@@ -1,5 +1,7 @@
 # Setup Meteor M-N2-3 with LRPT-Decoder and MeteorGIS
 
+<img src="img/meteor_m_2.gif" alt="" width="256" height="204" border="0"></a><br>
+
 Meteor-M series are equipped with two imaging payloads.<br>
 
 MSU-MR is a low-resolution instrument operating at visible-light and near-infrared wavelengths.<br>
@@ -21,15 +23,16 @@ Although this guide with the SDRSharp is outdated in 2023, and there are also ot
 
 ## Appendix
 
-- [ 1.1 Hardware ](https://github.com/happysat/Es-Hail-2-Oscar-100#satellite-dish-)
-- [ 1.2 Software ](https://github.com/happysat/Es-Hail-2-Oscar-100#satellite-dish-)
-- [ 1.3 Setup Orbitron/SDRSHarp ](https://github.com/happysat/Es-Hail-2-Oscar-100#satellite-dish-)
-- [ 1.4 Setup DDE-Tracker ](https://github.com/happysat/Es-Hail-2-Oscar-100#satellite-dish-)
-- [ 1.5 Setup Meteor Demulator Plugin ](https://github.com/happysat/Es-Hail-2-Oscar-100#satellite-dish-)
-- [ 1.6 LRPT Decoder Meteor M-N2-3 ](https://github.com/happysat/Es-Hail-2-Oscar-100#satellite-dish-)
-- [ 1.7 Setup MeteorGIS Meteor M-N2-3 ](https://github.com/happysat/Es-Hail-2-Oscar-100#satellite-dish-)
-- [ 1.8 Manual LRPT Decoder Setup ](https://github.com/happysat/Es-Hail-2-Oscar-100#satellite-dish-)
-- [ 1.9 Other Tools ](https://github.com/happysat/Es-Hail-2-Oscar-100#satellite-dish-)
+- [ Hardware ](https://github.com/happysat/Setup-Meteor-M-N2-3-with-LRPT-Decoder-and-MeteorGIS#hardware)
+- [ Antenna ](https://github.com/happysat/Setup-Meteor-M-N2-3-with-LRPT-Decoder-and-MeteorGIS#antennas)
+- [ Software ](https://github.com/happysat/Setup-Meteor-M-N2-3-with-LRPT-Decoder-and-MeteorGIS#software) 
+- [ Setup Orbitron/SDRSHarp ](https://github.com/happysat/Setup-Meteor-M-N2-3-with-LRPT-Decoder-and-MeteorGIS#setup-orbitronsdrsharp)
+- [ Setup DDE-Tracker ](https://github.com/happysat/Setup-Meteor-M-N2-3-with-LRPT-Decoder-and-MeteorGIS#setup-dde-tracking-client)
+- [ Setup Meteor Demulator Plugin ](https://github.com/happysat/Setup-Meteor-M-N2-3-with-LRPT-Decoder-and-MeteorGIS#setup-meteor-demodulator-plugin)
+- [ Setup LRPT Decoder Meteor ](https://github.com/happysat/Setup-Meteor-M-N2-3-with-LRPT-Decoder-and-MeteorGIS#setup-lrpt-decoder-for-meteor)
+- [ Setup MeteorGIS Meteor ](https://github.com/happysat/Setup-Meteor-M-N2-3-with-LRPT-Decoder-and-MeteorGIS#setup-meteorgis-meteor-m-n2-3)
+- [ Manual LRPT Decoder Setup ](https://github.com/happysat/Setup-Meteor-M-N2-3-with-LRPT-Decoder-and-MeteorGIS#manual-lrpt-decoder-setup)
+- [ Other Tools ](https://github.com/happysat/Setup-Meteor-M-N2-3-with-LRPT-Decoder-and-MeteorGIS#other-tools)
 
  
 ## Hardware<br>
